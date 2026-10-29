@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "creation": "2026-10-29 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_type",
+  "period_key",
+  "posting_date",
+  "amount",
+  "journal_entry"
+ ],
+ "fields": [
+  {
+   "fieldname": "posting_type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Drawdown\nProfit\nFee\nRepayment\nFee Payment",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "period_key",
+   "fieldtype": "Data",
+   "label": "Period / reference",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting date",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "journal_entry",
+   "fieldtype": "Link",
+   "label": "Journal entry",
+   "options": "Journal Entry",
+   "in_list_view": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-29 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Neotec Loans",
+ "name": "Finance Facility Posting",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1
+}

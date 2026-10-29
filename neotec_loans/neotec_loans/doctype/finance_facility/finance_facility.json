@@ -1,0 +1,322 @@
+{
+ "actions": [],
+ "creation": "2026-10-29 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "facility_name",
+  "company",
+  "facility_type",
+  "lender",
+  "lender_supplier",
+  "column_break_1",
+  "disbursement_date",
+  "principal",
+  "status",
+  "section_options",
+  "profit_treatment",
+  "accrual_basis",
+  "column_break_2",
+  "first_month",
+  "submit_entries",
+  "section_fee",
+  "fee_amount",
+  "fee_vat",
+  "vat_rate",
+  "column_break_3",
+  "fee_paid_on",
+  "fee_start_date",
+  "fee_months",
+  "section_accounts",
+  "bank_account",
+  "loan_payable_account",
+  "finance_cost_account",
+  "column_break_4",
+  "accrued_profit_account",
+  "deferred_finance_cost_account",
+  "fee_expense_account",
+  "prepaid_fee_account",
+  "input_vat_account",
+  "cost_center",
+  "section_schedule",
+  "schedule",
+  "section_postings",
+  "postings"
+ ],
+ "fields": [
+  {
+   "fieldname": "facility_name",
+   "fieldtype": "Data",
+   "label": "Facility",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "facility_type",
+   "fieldtype": "Select",
+   "label": "Facility type",
+   "options": "Term Loan\nShort-term Financing\nFacility Charge",
+   "reqd": 1,
+   "default": "Term Loan",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "lender",
+   "fieldtype": "Data",
+   "label": "Lender (bank)"
+  },
+  {
+   "fieldname": "lender_supplier",
+   "fieldtype": "Link",
+   "label": "Lender as supplier",
+   "options": "Supplier",
+   "description": "Used as the party when an account is a Payable account."
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "disbursement_date",
+   "fieldtype": "Date",
+   "label": "Drawdown date"
+  },
+  {
+   "fieldname": "principal",
+   "fieldtype": "Currency",
+   "label": "Principal drawn"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nActive\nClosed",
+   "default": "Draft",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_options",
+   "fieldtype": "Section Break",
+   "label": "Accounting treatment"
+  },
+  {
+   "fieldname": "profit_treatment",
+   "fieldtype": "Select",
+   "label": "Profit / interest treatment",
+   "options": "Accrue monthly, pay with instalment\nDeferred upfront, amortise monthly",
+   "default": "Accrue monthly, pay with instalment",
+   "description": "Accrue: monthly Dr finance cost / Cr accrued profit; paid with each instalment. Deferred (Murabaha / Tawarruq style): at drawdown Dr deferred finance cost / Cr loan payable for the whole profit, then released monthly."
+  },
+  {
+   "fieldname": "accrual_basis",
+   "fieldtype": "Select",
+   "label": "Spread profit",
+   "options": "Equal amount per month\nBy actual days",
+   "default": "Equal amount per month"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "first_month",
+   "fieldtype": "Select",
+   "label": "First accrual month",
+   "options": "Month of drawdown (or previous due date)\nMonth after drawdown",
+   "default": "Month of drawdown (or previous due date)",
+   "description": "Each instalment's profit is spread over the months between the previous due date (or the drawdown) and its own due date."
+  },
+  {
+   "fieldname": "submit_entries",
+   "fieldtype": "Check",
+   "label": "Submit journal entries",
+   "default": "0",
+   "description": "Off: entries are created as drafts for review."
+  },
+  {
+   "fieldname": "section_fee",
+   "fieldtype": "Section Break",
+   "label": "Facility charge",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "fee_amount",
+   "fieldtype": "Currency",
+   "label": "Charge amount"
+  },
+  {
+   "fieldname": "fee_vat",
+   "fieldtype": "Select",
+   "label": "VAT on the charge",
+   "options": "Amount includes VAT\nAmount excludes VAT\nNo VAT",
+   "default": "Amount includes VAT"
+  },
+  {
+   "fieldname": "vat_rate",
+   "fieldtype": "Percent",
+   "label": "VAT rate",
+   "default": "15"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "fee_paid_on",
+   "fieldtype": "Date",
+   "label": "Charge paid on"
+  },
+  {
+   "fieldname": "fee_start_date",
+   "fieldtype": "Date",
+   "label": "Amortise from"
+  },
+  {
+   "fieldname": "fee_months",
+   "fieldtype": "Int",
+   "label": "Amortise over (months)",
+   "default": "12"
+  },
+  {
+   "fieldname": "section_accounts",
+   "fieldtype": "Section Break",
+   "label": "Accounts"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "loan_payable_account",
+   "fieldtype": "Link",
+   "label": "Loan / financing payable",
+   "options": "Account"
+  },
+  {
+   "fieldname": "finance_cost_account",
+   "fieldtype": "Link",
+   "label": "Finance cost (P&L)",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "accrued_profit_account",
+   "fieldtype": "Link",
+   "label": "Accrued profit payable",
+   "options": "Account"
+  },
+  {
+   "fieldname": "deferred_finance_cost_account",
+   "fieldtype": "Link",
+   "label": "Deferred finance cost",
+   "options": "Account"
+  },
+  {
+   "fieldname": "fee_expense_account",
+   "fieldtype": "Link",
+   "label": "Facility charges expense",
+   "options": "Account"
+  },
+  {
+   "fieldname": "prepaid_fee_account",
+   "fieldtype": "Link",
+   "label": "Prepaid facility charges",
+   "options": "Account"
+  },
+  {
+   "fieldname": "input_vat_account",
+   "fieldtype": "Link",
+   "label": "Input VAT",
+   "options": "Account"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "section_schedule",
+   "fieldtype": "Section Break",
+   "label": "Repayment schedule"
+  },
+  {
+   "fieldname": "schedule",
+   "fieldtype": "Table",
+   "label": "Schedule",
+   "options": "Finance Facility Schedule",
+   "allow_bulk_edit": 1,
+   "description": "One row per instalment (or one row for a single maturity). Use Upload / Download on the grid to import from Excel."
+  },
+  {
+   "fieldname": "section_postings",
+   "fieldtype": "Section Break",
+   "label": "Posted entries",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "postings",
+   "fieldtype": "Table",
+   "label": "Postings",
+   "options": "Finance Facility Posting",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-29 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Neotec Loans",
+ "name": "Finance Facility",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "write": 1,
+   "export": 1,
+   "report": 1,
+   "role": "Accounts Manager"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "write": 1,
+   "export": 1,
+   "report": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "field:facility_name",
+ "naming_rule": "By fieldname",
+ "title_field": "facility_name",
+ "track_changes": 1
+}
